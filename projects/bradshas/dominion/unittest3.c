@@ -1,3 +1,39 @@
+void main(int argc, char**argv){
+
+	int handpos = 0;
+	int choice1 = 0;
+	int choice2 = 0;
+	int choice3 = 0;
+	int bonus = 0;
+	int player = 0;
+	int numPlayers = 0;
+	int randomwSeed = 1000;
+
+	//set card array
+	int k[10] = { minion, council_room, ambassador, tribute, mine, remodel, smithy, village, baron, great_hall };
+
+	//declare gamestate
+	struct gameState G, test;
+
+	
+	initializeGame(numPlayers, k, randomSeed, &G);
+	
+	printf("Testing Ambassador");
+	memcpy(&test, &G, sizeof(struct G));
+	
+	cardEffect(ambassador, choice1, choice2, choice3, &G, handPos, &bonus);
+	
+	player = whoseTurn(&test);
+
+	
+	
+	
+	
+	printf("End testing");
+
+	
+}
+
 /*int cardAmbassador(struct gameState *state, int handPos, int currentPlayer, int choice1, int choice2){
 	int i;
     int j;
@@ -26,9 +62,6 @@
 		return -1;
 	}
 
-	/*if (DEBUG)
-		printf("Player %d reveals card number: %d\n", currentPlayer, state->hand[currentPlayer][choice1]);
-	*/
 
 	//increase supply count for choosen card by amount being discarded
 	state->supplyCount[state->hand[currentPlayer][choice1]] += choice2;
